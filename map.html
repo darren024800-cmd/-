@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>生命晶脈地圖｜晶脈</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  #map{ padding-top:150px; background:var(--bg-deep); text-align:center; min-height:100vh; }
+  .map-stage{ position:relative; max-width:560px; margin:56px auto 0; aspect-ratio:1/1; }
+  .map-ring{ position:absolute; inset:0; border-radius:50%; border:1px dashed var(--gold-soft); }
+  .map-ring.r2{ inset:12%; border-style:solid; opacity:.5; }
+  .map-node{ position:absolute; width:118px; transform:translate(-50%,-50%); text-align:center; cursor:pointer; user-select:none; background:none; border:none; }
+  .map-node .dot{
+    width:58px; height:58px; border-radius:50%; margin:0 auto 10px;
+    background:radial-gradient(circle at 35% 30%, #fff, var(--gold-soft) 55%, var(--gold) 100%);
+    box-shadow:0 8px 20px -6px rgba(157,133,98,0.5);
+    display:flex; align-items:center; justify-content:center;
+    font-family:var(--round); font-size:12px; color:#fff; font-weight:700;
+    transition:transform .3s ease, box-shadow .3s ease;
+  }
+  .map-node:hover .dot, .map-node:focus .dot{ transform:scale(1.12); box-shadow:0 14px 28px -8px rgba(157,133,98,0.65); }
+  .map-node span.label{ font-family:var(--round); font-size:12.5px; color:var(--ink); letter-spacing:.04em; }
+  .n1{ top:82%; left:50%; }
+  .n2{ top:46%; left:20%; }
+  .n3{ top:14%; left:50%; }
+  @media(max-width:480px){ .map-node{ width:92px; } .map-node .dot{ width:48px; height:48px; } .n2{ left:16%; } }
+
+  .map-panel{
+    max-width:540px; margin:40px auto 0; padding:0 34px;
+    background:var(--bg); border:1px solid var(--line); border-radius:20px;
+    text-align:left; opacity:0; max-height:0; overflow:hidden;
+    transition:opacity .5s ease, max-height .6s ease, padding .5s ease;
+  }
+  .map-panel.active{ opacity:1; max-height:320px; padding:28px 34px; }
+  .map-panel .p-title{ font-size:19px; font-weight:600; margin-bottom:8px; color:var(--gold-deep); }
+  .map-panel .p-sub{ font-family:var(--round); font-size:12px; letter-spacing:.1em; color:var(--ink-soft); margin-bottom:12px; }
+  .map-hint{ margin-top:10px; }
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo"><img src="logo.png" alt="晶脈"><span>晶脈</span></a>
+    <div class="nav-links">
+      <a href="index.html">首頁</a>
+      <a href="companion.html">陪跑分類</a>
+      <a href="story.html">內容介紹</a>
+      <a href="map.html" class="active">生命地圖</a>
+      <a href="about.html">關於我</a>
+    </div>
+  </div>
+</nav>
+
+<section id="map">
+  <div class="wrap">
+    <div class="eyebrow" style="justify-content:center;">life map / 互動地圖</div>
+    <h2>你的生命晶脈地圖</h2>
+    <p class="map-hint">點一點下方的光點，看看此刻的你，正流動在哪一個區域。</p>
+
+    <div class="map-stage">
+      <div class="map-ring"></div>
+      <div class="map-ring r2"></div>
+
+      <button class="map-node n1" data-key="root" aria-label="湧泉之谷">
+        <div class="dot">湧泉</div>
+        <span class="label">湧泉之谷 · 海底輪</span>
+      </button>
+      <button class="map-node n2" data-key="heart" aria-label="繁星森林">
+        <div class="dot">繁星</div>
+        <span class="label">繁星森林 · 心輪</span>
+      </button>
+      <button class="map-node n3" data-key="crown" aria-label="澄澈之巔">
+        <div class="dot">澄澈</div>
+        <span class="label">澄澈之巔 · 眉心輪</span>
+      </button>
+    </div>
+
+    <div class="map-panel" id="mapPanel">
+      <div class="p-title" id="pTitle"></div>
+      <div class="p-sub" id="pSub"></div>
+      <p id="pText"></p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="fmark">✦</span>
+  晶脈 JING MAI ｜ 順應內在紋理的人生陪跑日記
+  <nav class="foot-links">
+    <a href="index.html">首頁</a><a href="companion.html">陪跑分類</a><a href="story.html">內容介紹</a><a href="map.html">生命地圖</a><a href="about.html">關於我</a>
+  </nav>
+</footer>
+
+<script>
+  window.addEventListener('scroll', () => {
+    document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 30);
+  });
+
+  const data = {
+    root: { title:'湧泉之谷 · 海底輪', sub:'GROUNDING · 安全感與根基',
+      text:'此刻的你，或許正在重新確認自己站立的地方是否穩固。試著回到身體的感受，慢下來，允許自己先被安放，再談前進。' },
+    heart: { title:'繁星森林 · 心輪', sub:'CONNECTION · 關係與愛的流動',
+      text:'你正處在與他人、與自己重新連結的階段。允許脆弱被看見，也允許自己溫柔地靠近那些一直逃避的關係課題。' },
+    crown: { title:'澄澈之巔 · 眉心輪', sub:'CLARITY · 洞察與方向',
+      text:'你正在尋找一份清晰。放下急著找答案的焦慮，答案往往在你願意誠實看見自己之後，才會自然浮現。' }
+  };
+  const panel = document.getElementById('mapPanel');
+  const pTitle = document.getElementById('pTitle');
+  const pSub = document.getElementById('pSub');
+  const pText = document.getElementById('pText');
+
+  document.querySelectorAll('.map-node').forEach(node => {
+    node.addEventListener('click', () => {
+      const d = data[node.dataset.key];
+      pTitle.textContent = d.title;
+      pSub.textContent = d.sub;
+      pText.textContent = d.text;
+      panel.classList.add('active');
+      panel.scrollIntoView({behavior:'smooth', block:'nearest'});
+    });
+  });
+</script>
+</body>
+</html>

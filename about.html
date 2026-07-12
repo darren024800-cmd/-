@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>關於我｜晶脈</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  #about{ padding-top:150px; }
+  #about .about-box{
+    background:var(--bg-deep); border:1px solid var(--line); border-radius:24px;
+    padding:48px clamp(24px,6vw,58px); margin-top:32px;
+  }
+  #about .sign{ margin-top:30px; font-family:var(--round); font-size:14px; color:var(--gold-deep); letter-spacing:.1em; }
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo"><img src="logo.png" alt="晶脈"><span>晶脈</span></a>
+    <div class="nav-links">
+      <a href="index.html">首頁</a>
+      <a href="companion.html">陪跑分類</a>
+      <a href="story.html">內容介紹</a>
+      <a href="map.html">生命地圖</a>
+      <a href="about.html" class="active">關於我</a>
+    </div>
+  </div>
+</nav>
+
+<section id="about">
+  <div class="wrap">
+    <div class="eyebrow">about / 關於我</div>
+    <h2>2026 年 盛夏 隨筆</h2>
+    <div class="about-box">
+      <p>我曾經也努力活成別人眼中「應該」的樣子——努力、正確、無可挑剔。直到某一天，我在最安靜的深夜裡問自己：這真的是我想要的紋理嗎？</p>
+      <p style="margin-top:16px;">後來我才明白，晶脈不是要對抗誰，而是順著自己內在真實的紋理，一層一層地把外界貼上的標籤放下。這條路我還在走，也還在梳理自己。晶脈這個空間，是我想邀請你，一起誠實地面對、一起慢慢舒展的地方。</p>
+      <div class="sign">— 願我們都能，活成自己最舒展的樣子</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="fmark">✦</span>
+  晶脈 JING MAI ｜ 順應內在紋理的人生陪跑日記
+  <nav class="foot-links">
+    <a href="index.html">首頁</a><a href="companion.html">陪跑分類</a><a href="story.html">內容介紹</a><a href="map.html">生命地圖</a><a href="about.html">關於我</a>
+  </nav>
+</footer>
+
+<script>
+  window.addEventListener('scroll', () => {
+    document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 30);
+  });
+</script>
+</body>
+</html>

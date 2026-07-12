@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>陪跑分類｜晶脈</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  #companion{ padding-top:150px; background:var(--bg-deep); min-height:100vh; }
+  .cat-grid{ display:grid; grid-template-columns:1fr 1fr; gap:28px; margin-top:44px; }
+  @media(max-width:720px){ .cat-grid{ grid-template-columns:1fr; } }
+  .cat-card{
+    background:var(--bg); border:1px solid var(--line); border-radius:22px;
+    padding:40px 32px; position:relative; overflow:hidden;
+    transition:transform .4s ease, box-shadow .4s ease;
+  }
+  .cat-card:hover{ transform:translateY(-6px); box-shadow:0 30px 50px -30px rgba(157,133,98,0.35); }
+  .cat-card .tag{ font-family:var(--round); font-size:12px; color:var(--gold-deep); letter-spacing:0.18em; }
+  .cat-card h3{ font-size:22px; margin:12px 0 12px; }
+  .cat-card p{ font-size:14.5px; }
+  .cat-card .mark{ position:absolute; right:-6px; top:-16px; font-size:80px; font-family:var(--serif); color:var(--gold); opacity:.08; }
+  .cat-card ul{ margin-top:18px; padding-left:0; list-style:none; }
+  .cat-card li{ font-size:14px; color:var(--ink-soft); padding:8px 0; border-top:1px solid var(--line); display:flex; gap:8px; }
+  .cat-card li::before{ content:'·'; color:var(--gold-deep); font-weight:700; }
+  .cat-card .price{ margin-top:20px; font-family:var(--round); font-size:13px; color:var(--gold-deep); }
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo"><img src="logo.png" alt="晶脈"><span>晶脈</span></a>
+    <div class="nav-links">
+      <a href="index.html">首頁</a>
+      <a href="companion.html" class="active">陪跑分類</a>
+      <a href="story.html">內容介紹</a>
+      <a href="map.html">生命地圖</a>
+      <a href="about.html">關於我</a>
+    </div>
+  </div>
+</nav>
+
+<section id="companion">
+  <div class="wrap">
+    <div class="eyebrow">companion / 靈魂補給</div>
+    <h2>你需要的，是一次梳理，還是一段長期的陪伴？</h2>
+    <p>每個人的晶脈流動速度不同，這裡沒有標準答案，只有適合當下的你的方式。</p>
+
+    <div class="cat-grid">
+      <div class="cat-card">
+        <div class="mark">早</div>
+        <div class="tag">SINGLE SESSION</div>
+        <h3>早餐 · 單次深探</h3>
+        <p>一次聚焦、一次梳理。像清晨的第一口呼吸，把糾結的思緒攤開來看清楚，找到眼前這一步該怎麼走。</p>
+        <ul>
+          <li>90 分鐘真人一對一深度對談</li>
+          <li>釐清這階段真正卡住你的問題</li>
+          <li>當次盲點與資源簡要盤點</li>
+          <li>會後提供一份對談摘要與下一步建議</li>
+        </ul>
+        <div class="price">適合：正在十字路口、需要立刻釐清方向的你</div>
+      </div>
+
+      <div class="cat-card">
+        <div class="mark">深</div>
+        <div class="tag">LONG-TERM JOURNEY</div>
+        <h3>在地深化 · 長期陪伴</h3>
+        <p>不是速成，而是定錨。像在一座城市住下來，慢慢認識自己的紋理與節奏，走過一段真正扎根、真正改變的旅程。</p>
+        <ul>
+          <li>每月定期真人一對一陪跑對談</li>
+          <li>完整的盲點、優勢與慣性模式分析</li>
+          <li>階段性回顧與調整陪跑方向</li>
+          <li>對談之外的文字追蹤與練習陪伴</li>
+        </ul>
+        <div class="price">適合：想扎實地改變、願意投入一段時間陪自己走的你</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="fmark">✦</span>
+  晶脈 JING MAI ｜ 順應內在紋理的人生陪跑日記
+  <nav class="foot-links">
+    <a href="index.html">首頁</a><a href="companion.html">陪跑分類</a><a href="story.html">內容介紹</a><a href="map.html">生命地圖</a><a href="about.html">關於我</a>
+  </nav>
+</footer>
+
+<script>
+  window.addEventListener('scroll', () => {
+    document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 30);
+  });
+</script>
+</body>
+</html>
