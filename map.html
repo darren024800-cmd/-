@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>生命晶脈地圖｜晶脈</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  #map{ padding-top:150px; background:var(--bg-deep); text-align:center; }
+  .map-hint{ margin-top:10px; }
+
+  /* ---------- 七脈輪 手風琴 ---------- */
+  .chakra-list{ max-width:640px; margin:44px auto 0; text-align:left; display:flex; flex-direction:column; gap:14px; }
+  .chakra-item{
+    background:var(--bg); border:1px solid var(--line); border-radius:16px; overflow:hidden;
+  }
+  .chakra-head{
+    width:100%; display:flex; align-items:center; gap:16px; padding:18px 20px;
+    background:none; border:none; cursor:pointer; text-align:left;
+  }
+  .chakra-dot{
+    width:38px; height:38px; border-radius:50%; flex-shrink:0;
+    box-shadow:0 6px 14px -4px rgba(60,50,30,0.35);
+  }
+  .chakra-head .ct{ flex:1; }
+  .chakra-head h3{ font-size:16.5px; margin-bottom:2px; }
+  .chakra-head .sub{ font-family:var(--round); font-size:11.5px; color:var(--ink-soft); letter-spacing:.08em; }
+  .chakra-arrow{ font-family:var(--round); color:var(--gold-deep); transition:transform .35s ease; flex-shrink:0; }
+  .chakra-item.open .chakra-arrow{ transform:rotate(180deg); }
+  .chakra-body{ max-height:0; overflow:hidden; transition:max-height .5s ease, padding .5s ease; padding:0 22px; }
+  .chakra-item.open .chakra-body{ max-height:400px; padding:0 22px 22px; }
+  .chakra-body p{ font-size:14.5px; margin-bottom:12px; }
+  .chakra-crystals{ display:flex; flex-wrap:wrap; gap:8px; }
+  .crystal-tag{
+    font-family:var(--round); font-size:12px; color:var(--gold-deep);
+    background:rgba(189,162,126,0.12); border:1px solid var(--line);
+    padding:6px 14px; border-radius:20px;
+  }
+
+  /* ---------- 測驗區 ---------- */
+  #quiz{ background:var(--bg); }
+  .quiz-intro{ max-width:600px; margin:0 auto; }
+  .quiz-scale-legend{
+    display:flex; justify-content:center; gap:14px; margin:26px auto 6px;
+    font-family:var(--round); font-size:11.5px; color:var(--ink-soft); flex-wrap:wrap;
+  }
+  .quiz-list{ max-width:640px; margin:26px auto 0; display:flex; flex-direction:column; gap:16px; text-align:left; }
+  .q-card{ background:var(--bg-deep); border:1px solid var(--line); border-radius:16px; padding:20px 22px; }
+  .q-card .q-text{ font-size:14.5px; color:var(--ink); margin-bottom:14px; line-height:1.7; }
+  .q-scale{ display:flex; gap:10px; justify-content:space-between; }
+  .q-opt{
+    flex:1; font-family:var(--round); font-size:12px; color:var(--ink-soft);
+    background:var(--bg); border:1px solid var(--line); border-radius:12px;
+    padding:10px 4px; text-align:center; cursor:pointer; transition:all .25s ease;
+  }
+  .q-opt.selected{ background:var(--gold); color:#fff; border-color:var(--gold); }
+
+  .quiz-submit{ margin-top:36px; }
+  .quiz-note{ font-family:var(--round); font-size:12px; color:var(--ink-soft); margin-top:14px; }
+
+  .result-panel{
+    max-width:600px; margin:40px auto 0; padding:0 36px;
+    background:var(--bg-deep); border:1px solid var(--gold); border-radius:22px;
+    text-align:left; opacity:0; max-height:0; overflow:hidden;
+    transition:opacity .6s ease, max-height .7s ease, padding .6s ease;
+  }
+  .result-panel.active{ opacity:1; max-height:600px; padding:34px 36px 38px; }
+  .result-panel .r-eyebrow{ font-family:var(--round); font-size:12px; letter-spacing:.2em; color:var(--gold-deep); margin-bottom:10px; }
+  .result-panel h3{ font-size:24px; margin-bottom:6px; }
+  .result-panel .r-sub{ font-family:var(--round); font-size:12.5px; color:var(--ink-soft); margin-bottom:16px; }
+  .result-panel p{ font-size:14.5px; margin-bottom:16px; }
+  .result-crystals{ display:flex; flex-wrap:wrap; gap:10px; margin-bottom:20px; }
+  .result-crystals .crystal-tag{ font-size:13px; padding:8px 16px; }
+  .result-cta{ display:flex; gap:12px; flex-wrap:wrap; }
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo"><img src="logo.png" alt="晶脈"><span>晶脈</span></a>
+    <div class="nav-links">
+      <a href="index.html">首頁</a>
+      <a href="companion.html">陪跑分類</a>
+      <a href="story.html">內容介紹</a>
+      <a href="map.html" class="active">生命地圖</a>
+      <a href="about.html">關於我</a>
+    </div>
+  </div>
+</nav>
+
+<section id="map">
+  <div class="wrap">
+    <div class="eyebrow" style="justify-content:center;">life map / 七脈輪地圖</div>
+    <h2>你的生命晶脈地圖</h2>
+    <p class="map-hint">點一點下方的每個脈輪，看看它掌管的區域與相應的療癒水晶。</p>
+
+    <div class="chakra-list" id="chakraList"></div>
+  </div>
+</section>
+
+<div class="divider" style="margin:0 24px;"><div class="l"></div><span>✦</span><div class="r"></div></div>
+
+<section id="quiz">
+  <div class="wrap">
+    <div class="eyebrow" style="justify-content:center;">quiz / 脈輪能量測驗</div>
+    <h2 style="text-align:center;">找出此刻，你最需要補齊的脈輪</h2>
+    <p class="quiz-intro" style="text-align:center;">以下 21 題，請憑直覺回答「這段時間的自己」符合每句話的程度，答完後會告訴你目前最需要被關注的脈輪，並推薦相對應的療癒水晶。</p>
+
+    <div class="quiz-scale-legend">
+      <span>1 完全不符合</span><span>2 有點符合</span><span>3 蠻符合</span><span>4 非常符合</span>
+    </div>
+
+    <div class="quiz-list" id="quizList"></div>
+
+    <div style="text-align:center;" class="quiz-submit">
+      <button class="btn btn-primary" id="submitQuiz">看看我的結果</button>
+      <div class="quiz-note" id="quizNote">請先完成全部 21 題</div>
+    </div>
+
+    <div class="result-panel" id="resultPanel">
+      <div class="r-eyebrow">YOUR RESULT</div>
+      <h3 id="rTitle"></h3>
+      <div class="r-sub" id="rSub"></div>
+      <p id="rText"></p>
+      <div class="result-crystals" id="rCrystals"></div>
+      <p style="font-size:13px;">想更了解如何用水晶手鍊補齊這個脈輪的能量嗎？歡迎透過陪跑分類頁面找到適合的陪伴方案，或加入官方 LINE 直接詢問。</p>
+      <div class="result-cta">
+        <a href="companion.html" class="btn btn-primary">查看陪跑方案</a>
+        <a href="https://lin.ee/sXX670c" class="btn btn-ghost" target="_blank" rel="noopener">加入官方 LINE</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="fmark">✦</span>
+  晶脈 JING MAI ｜ 順應內在紋理的人生陪跑日記
+  <nav class="foot-links">
+    <a href="index.html">首頁</a><a href="companion.html">陪跑分類</a><a href="story.html">內容介紹</a><a href="map.html">生命地圖</a><a href="about.html">關於我</a>
+  </nav>
+</footer>
+
+<script>
+  window.addEventListener('scroll', () => {
+    document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 30);
+  });
+
+  // ---------- 七脈輪資料 ----------
+  const chakras = [
+    { key:'root', color:'#c65b4e', name:'海底輪', title:'湧泉之谷 · 海底輪', sub:'ROOT · 安全感與根基',
+      desc:'掌管生存、安全感與物質層面的穩定。當這裡的能量不足，人容易感到不安、缺乏依靠、身體緊繃難以放鬆。',
+      crystals:['紅碧玉','黑曜石','石榴石'] },
+    { key:'sacral', color:'#d98a3d', name:'臍輪', title:'潮汐之灣 · 臍輪', sub:'SACRAL · 情感與創造力',
+      desc:'掌管情緒流動、親密感受與創造力。能量不足時，容易感到麻木、難以享受生活，也較難自在地表達親密與慾望。',
+      crystals:['紅玉髓','太陽石','橘色月光石'] },
+    { key:'solar', color:'#d9b23d', name:'太陽神經叢輪', title:'暖陽高原 · 太陽神經叢輪', sub:'SOLAR PLEXUS · 自信與意志力',
+      desc:'掌管自信、意志力與自我價值感。不足時容易猶豫不決、在意他人眼光，感覺自己失去了為自己做主的力量。',
+      crystals:['虎眼石','黃水晶','黃玉'] },
+    { key:'heart', color:'#7fa876', name:'心輪', title:'繁星森林 · 心輪', sub:'HEART · 愛與連結',
+      desc:'掌管愛、信任與人際間的連結。能量不足時，容易在關係裡築起防衛的牆，或感覺付出很多卻很少被接住。',
+      crystals:['粉晶','綠東陵玉','粉紫鋰輝石'] },
+    { key:'throat', color:'#4f8fa8', name:'喉輪', title:'迴音峽谷 · 喉輪', sub:'THROAT · 表達與溝通',
+      desc:'掌管真實的表達與溝通。不足時容易把話吞回去，不敢說出真正的想法，長期下來會累積委屈。',
+      crystals:['藍紋瑪瑙','海藍寶','藍晶石'] },
+    { key:'third', color:'#5a5aa6', name:'眉心輪', title:'澄澈之巔 · 眉心輪', sub:'THIRD EYE · 洞察與直覺',
+      desc:'掌管直覺、洞察與內在的清晰。能量不足時，容易思緒混亂、抓不到方向，也難以信任自己的直覺判斷。',
+      crystals:['紫水晶','拉長石','螢石'] },
+    { key:'crown', color:'#9c7bc9', name:'頂輪', title:'星穹聖殿 · 頂輪', sub:'CROWN · 靈性連結與意義',
+      desc:'掌管與更大存在的連結、生命的意義感。不足時容易感到一種說不出的空虛，即使外在一切安好，內心仍覺得缺了什麼。',
+      crystals:['白水晶','紫黃晶','透石膏'] },
+  ];
+
+  const chakraList = document.getElementById('chakraList');
+  chakras.forEach((c, i) => {
+    const item = document.createElement('div');
+    item.className = 'chakra-item';
+    item.innerHTML = `
+      <button class="chakra-head" data-i="${i}">
+        <div class="chakra-dot" style="background:${c.color}"></div>
+        <div class="ct">
+          <h3>${c.title}</h3>
+          <div class="sub">${c.sub}</div>
+        </div>
+        <div class="chakra-arrow">▾</div>
+      </button>
+      <div class="chakra-body">
+        <p>${c.desc}</p>
+        <div class="chakra-crystals">
+          ${c.crystals.map(x => `<span class="crystal-tag">${x}</span>`).join('')}
+        </div>
+      </div>`;
+    chakraList.appendChild(item);
+  });
+  chakraList.addEventListener('click', (e) => {
+    const head = e.target.closest('.chakra-head');
+    if(!head) return;
+    head.closest('.chakra-item').classList.toggle('open');
+  });
+
+  // ---------- 21 題測驗 ----------
+  const questions = [
+    { key:'root', text:'我最近常感到不安，好像隨時會失去穩定的依靠。' },
+    { key:'root', text:'我對金錢或生活的基本保障，感到明顯的焦慮。' },
+    { key:'root', text:'我很難放鬆下來，身體總是緊繃、不容易安穩入睡。' },
+    { key:'sacral', text:'我覺得自己好像很久沒有真正享受生活的樂趣。' },
+    { key:'sacral', text:'我很難表達或感受自己的情緒，常常感到麻木。' },
+    { key:'sacral', text:'我在親密關係或身體感受上，覺得卡卡的、不太自在。' },
+    { key:'solar', text:'我常常沒自信，很容易因為別人的看法而動搖。' },
+    { key:'solar', text:'我做決定時容易猶豫不決，很怕自己選錯。' },
+    { key:'solar', text:'我覺得自己好像失去了為自己做主的力量。' },
+    { key:'heart', text:'我對身邊的人事物，好像變得比較冷淡、難以投入感情。' },
+    { key:'heart', text:'我很難真心信任別人，總是先築起一道牆。' },
+    { key:'heart', text:'我覺得自己付出很多，卻很少被好好接住。' },
+    { key:'throat', text:'我常常話到嘴邊又吞回去，不敢說出真實的想法。' },
+    { key:'throat', text:'我覺得自己的聲音好像不被聽見，或是不敢被聽見。' },
+    { key:'throat', text:'我很怕在別人面前表達不同意見，容易委屈自己。' },
+    { key:'third', text:'我最近做決定常常很混亂，抓不到方向感。' },
+    { key:'third', text:'我很難信任自己的直覺，總是需要別人告訴我答案。' },
+    { key:'third', text:'我覺得自己被太多雜訊淹沒，靜不下心好好思考。' },
+    { key:'crown', text:'我常常覺得生活缺少一個更大的意義或目標。' },
+    { key:'crown', text:'我覺得自己和更大的存在（信仰、宇宙、內在）失去了連結。' },
+    { key:'crown', text:'我常常感到一種說不出來的空虛感，即使外在一切都還好。' },
+  ];
+
+  const answers = new Array(questions.length).fill(0);
+  const quizList = document.getElementById('quizList');
+  questions.forEach((q, i) => {
+    const card = document.createElement('div');
+    card.className = 'q-card';
+    card.innerHTML = `
+      <div class="q-text">${i+1}. ${q.text}</div>
+      <div class="q-scale">
+        ${[1,2,3,4].map(v => `<div class="q-opt" data-i="${i}" data-v="${v}">${v}</div>`).join('')}
+      </div>`;
+    quizList.appendChild(card);
+  });
+
+  const submitBtn = document.getElementById('submitQuiz');
+  const quizNote = document.getElementById('quizNote');
+
+  function updateNote(){
+    const answered = answers.filter(a => a > 0).length;
+    quizNote.textContent = answered === questions.length
+      ? '已完成全部題目，可以點上方按鈕看結果了'
+      : `已完成 ${answered} / ${questions.length} 題`;
+  }
+  updateNote();
+
+  quizList.addEventListener('click', (e) => {
+    const opt = e.target.closest('.q-opt');
+    if(!opt) return;
+    const i = +opt.dataset.i, v = +opt.dataset.v;
+    answers[i] = v;
+    opt.parentElement.querySelectorAll('.q-opt').forEach(o => o.classList.remove('selected'));
+    opt.classList.add('selected');
+    updateNote();
+  });
+
+  const chakraResultData = {};
+  chakras.forEach(c => chakraResultData[c.key] = c);
+
+  const resultPanel = document.getElementById('resultPanel');
+  submitBtn.addEventListener('click', () => {
+    if(answers.some(a => a === 0)){
+      quizNote.textContent = '還有題目尚未作答，請完成全部 21 題再看結果哦';
+      quizNote.style.color = '#c65b4e';
+      return;
+    }
+    const scores = {};
+    questions.forEach((q, i) => { scores[q.key] = (scores[q.key]||0) + answers[i]; });
+    let topKey = null, topScore = -1;
+    Object.entries(scores).forEach(([k,v]) => { if(v > topScore){ topScore = v; topKey = k; } });
+    const c = chakraResultData[topKey];
+
+    document.getElementById('rTitle').textContent = c.title;
+    document.getElementById('rSub').textContent = c.sub;
+    document.getElementById('rText').textContent = c.desc;
+    document.getElementById('rCrystals').innerHTML = c.crystals.map(x => `<span class="crystal-tag">${x}</span>`).join('');
+    resultPanel.classList.add('active');
+    resultPanel.scrollIntoView({behavior:'smooth', block:'center'});
+  });
+</script>
+</body>
+</html>

@@ -23,6 +23,21 @@
   .cat-card li{ font-size:14px; color:var(--ink-soft); padding:8px 0; border-top:1px solid var(--line); display:flex; gap:8px; }
   .cat-card li::before{ content:'·'; color:var(--gold-deep); font-weight:700; }
   .cat-card .price{ margin-top:20px; font-family:var(--round); font-size:13px; color:var(--gold-deep); }
+
+  .line-cta{
+    margin-top:50px; background:var(--bg); border:1px solid var(--line); border-radius:22px;
+    padding:36px 32px; text-align:center;
+  }
+  .line-cta h3{ font-size:19px; margin-bottom:10px; }
+  .line-cta p{ font-size:14px; max-width:440px; margin:0 auto 22px; }
+  .line-btn{
+    display:inline-flex; align-items:center; gap:10px;
+    background:#06C755; color:#fff; font-family:var(--round); font-size:15px; font-weight:700;
+    padding:14px 34px; border-radius:30px; text-decoration:none;
+    transition:all .3s ease;
+  }
+  .line-btn:hover{ background:#05a648; transform:translateY(-2px); box-shadow:0 12px 24px -10px rgba(6,199,85,0.5); }
+  .line-btn svg{ width:20px; height:20px; }
 </style>
 </head>
 <body>
@@ -50,10 +65,10 @@
       <div class="cat-card">
         <div class="mark">早</div>
         <div class="tag">SINGLE SESSION</div>
-        <h3>單次深探</h3>
+        <h3>早餐 · 單次深探</h3>
         <p>一次聚焦、一次梳理。像清晨的第一口呼吸，把糾結的思緒攤開來看清楚，找到眼前這一步該怎麼走。</p>
         <ul>
-          <li>60 分鐘真人一對一深度對談</li>
+          <li>90 分鐘真人一對一深度對談</li>
           <li>釐清這階段真正卡住你的問題</li>
           <li>當次盲點與資源簡要盤點</li>
           <li>會後提供一份對談摘要與下一步建議</li>
@@ -64,10 +79,10 @@
       <div class="cat-card">
         <div class="mark">深</div>
         <div class="tag">LONG-TERM JOURNEY</div>
-        <h3>長期陪伴</h3>
-        <p>不是速成，而是定錨。像在一座城市住下來，慢慢認識自己的內心與節奏，走過一段真正扎根、真正改變的旅程。</p>
+        <h3>在地深化 · 長期陪伴</h3>
+        <p>不是速成，而是定錨。像在一座城市住下來，慢慢認識自己的紋理與節奏，走過一段真正扎根、真正改變的旅程。</p>
         <ul>
-          <li>每個禮拜定期真人一對一陪跑對談</li>
+          <li>每月定期真人一對一陪跑對談</li>
           <li>完整的盲點、優勢與慣性模式分析</li>
           <li>階段性回顧與調整陪跑方向</li>
           <li>對談之外的文字追蹤與練習陪伴</li>
@@ -75,12 +90,22 @@
         <div class="price">適合：想扎實地改變、願意投入一段時間陪自己走的你</div>
       </div>
     </div>
+
+    <div class="line-cta">
+      <h3>想直接聊聊，看看哪一種方式適合你？</h3>
+      <p>加入晶脈官方 LINE，用最輕鬆的方式聊聊你現在的狀態，我會協助你判斷適合單次深探，還是長期陪伴。</p>
+      <!-- 請把下面 href 換成你自己的 LINE 官方帳號連結，例如 https://lin.ee/xxxxxxx -->
+      <a href="https://lin.ee/sXX670c" class="line-btn" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 5.94 2 10.7c0 4.27 3.58 7.85 8.42 8.55.33.07.77.22.88.5.1.26.07.66.03.92l-.14.86c-.04.26-.2 1 .87.55 1.08-.46 5.8-3.42 7.92-5.85C21.44 14.1 22 12.47 22 10.7 22 5.94 17.52 2 12 2z"/></svg>
+        加入官方 LINE
+      </a>
+    </div>
   </div>
 </section>
 
 <footer>
   <span class="fmark">✦</span>
-  晶脈 JING MAI ｜ 順應內心的人生陪跑日記
+  晶脈 JING MAI ｜ 順應內在紋理的人生陪跑日記
   <nav class="foot-links">
     <a href="index.html">首頁</a><a href="companion.html">陪跑分類</a><a href="story.html">內容介紹</a><a href="map.html">生命地圖</a><a href="about.html">關於我</a>
   </nav>
