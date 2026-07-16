@@ -95,8 +95,8 @@ footer{
   border-top:1px solid var(--line); margin-top:20px;
 }
 footer .fmark{ color:var(--gold); font-size:20px; display:block; margin-bottom:12px; }
-footer nav.foot-links{ position:static; background:none; backdrop-filter:none; padding:16px 0 0; }
-footer .foot-links a{ color:var(--ink-soft); text-decoration:none; margin:0 10px; }
+footer nav.foot-links{ position:static; background:none; backdrop-filter:none; padding:16px 0 0; display:flex; flex-wrap:wrap; justify-content:center; }
+footer .foot-links a{ color:var(--ink-soft); text-decoration:none; margin:4px 10px; white-space:nowrap; }
 footer .foot-links a:hover{ color:var(--gold-deep); }
 
 @media (prefers-reduced-motion: reduce){
