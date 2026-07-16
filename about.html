@@ -12,6 +12,27 @@
     padding:48px clamp(24px,6vw,58px); margin-top:32px;
   }
   #about .sign{ margin-top:30px; font-family:var(--round); font-size:14px; color:var(--gold-deep); letter-spacing:.1em; }
+
+  .coach-card{
+    display:flex; gap:40px; align-items:center; flex-wrap:wrap;
+    background:#fff; border:1px solid var(--line); border-radius:24px;
+    padding:36px; margin-top:34px;
+  }
+  .coach-photo{
+    width:180px; height:180px; border-radius:50%; overflow:hidden; flex-shrink:0;
+    border:3px solid var(--gold-soft); box-shadow:0 16px 30px -18px rgba(157,133,98,0.5);
+    margin:0 auto;
+  }
+  .coach-photo img{ width:100%; height:100%; object-fit:cover; }
+  .coach-info{ flex:1 1 260px; }
+  .coach-info h3{ font-size:20px; margin-bottom:6px; }
+  .coach-info .role{ font-family:var(--round); font-size:12.5px; color:var(--gold-deep); letter-spacing:.1em; margin-bottom:16px; }
+  .coach-tags{ display:flex; flex-wrap:wrap; gap:8px; margin-top:16px; }
+  .coach-tags span{
+    font-family:var(--round); font-size:12px; color:var(--gold-deep);
+    background:rgba(189,162,126,0.12); border:1px solid var(--line);
+    padding:6px 14px; border-radius:20px;
+  }
 </style>
 </head>
 <body>
@@ -32,18 +53,36 @@
 <section id="about">
   <div class="wrap">
     <div class="eyebrow">about / 關於我</div>
-    <h2>2026 年心情隨筆</h2>
+    <h2>誰在陪你走這段路</h2>
+
+    <div class="coach-card">
+      <div class="coach-photo"><img src="coach.jpg" alt="晶脈教練"></div>
+      <div class="coach-info">
+        <h3>晶脈 · 教練</h3>
+        <div class="role">花草精油療癒師 · 結構整復師 · 靈媒</div>
+        <p>我的陪伴橫跨身體與心靈兩個層面——從實際的身體結構調整，到看不見的能量與直覺解讀，希望能從不同角度，陪你找到真正適合自己的那條路。</p>
+        <div class="coach-tags">
+          <span>花草精油療癒 · 2 年經驗</span>
+          <span>結構整復師 · 8 年經驗</span>
+          <span>靈媒 · 15 年經驗</span>
+          <span>靈媒諮詢 100+ 人次</span>
+          <span>整復經驗 百人以上</span>
+        </div>
+      </div>
+    </div>
+
+    <h2 style="margin-top:64px;">2026 年 盛夏 隨筆</h2>
     <div class="about-box">
-      <p>我曾經也努力活成別人眼中「應該」的樣子——考試100分、有個好工作、交男\女朋友。直到某一天，我在最安靜的深夜裡問自己：這真的是我想要的人生嗎？</p>
-      <p style="margin-top:16px;">後來我才明白，晶脈不是要活成他人，而是順著自己內在真實的聲音，一層一層地把外界貼上的標籤放下。這條路我還在走，也還在梳理自己。晶脈這個空間，是我想邀請你，一起誠實地面對、一起慢慢改變的地方。</p>
-      <div class="sign">— 願我們都能，活成自己最舒適的樣子</div>
+      <p>我曾經也努力活成別人眼中「應該」的樣子——努力、正確、無可挑剔。直到某一天，我在最安靜的深夜裡問自己：這真的是我想要的紋理嗎？</p>
+      <p style="margin-top:16px;">後來我才明白，晶脈不是要對抗誰，而是順著自己內在真實的紋理，一層一層地把外界貼上的標籤放下。這條路我還在走，也還在梳理自己。晶脈這個空間，是我想邀請你，一起誠實地面對、一起慢慢舒展的地方。</p>
+      <div class="sign">— 願我們都能，活成自己最舒展的樣子</div>
     </div>
   </div>
 </section>
 
 <footer>
   <span class="fmark">✦</span>
-  晶脈 JING MAI ｜ 順應內心的人生陪跑日記
+  晶脈 JING MAI ｜ 順應內在紋理的人生陪跑日記
   <nav class="foot-links">
     <a href="index.html">首頁</a><a href="companion.html">陪跑分類</a><a href="story.html">內容介紹</a><a href="map.html">生命地圖</a><a href="about.html">關於我</a>
   </nav>

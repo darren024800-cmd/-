@@ -6,39 +6,7 @@
 <title>生命晶脈地圖｜晶脈</title>
 <link rel="stylesheet" href="style.css">
 <style>
-  #map{ padding-top:150px; background:var(--bg-deep); text-align:center; }
-  .map-hint{ margin-top:10px; }
-
-  /* ---------- 七脈輪 手風琴 ---------- */
-  .chakra-list{ max-width:640px; margin:44px auto 0; text-align:left; display:flex; flex-direction:column; gap:14px; }
-  .chakra-item{
-    background:var(--bg); border:1px solid var(--line); border-radius:16px; overflow:hidden;
-  }
-  .chakra-head{
-    width:100%; display:flex; align-items:center; gap:16px; padding:18px 20px;
-    background:none; border:none; cursor:pointer; text-align:left;
-  }
-  .chakra-dot{
-    width:38px; height:38px; border-radius:50%; flex-shrink:0;
-    box-shadow:0 6px 14px -4px rgba(60,50,30,0.35);
-  }
-  .chakra-head .ct{ flex:1; }
-  .chakra-head h3{ font-size:16.5px; margin-bottom:2px; }
-  .chakra-head .sub{ font-family:var(--round); font-size:11.5px; color:var(--ink-soft); letter-spacing:.08em; }
-  .chakra-arrow{ font-family:var(--round); color:var(--gold-deep); transition:transform .35s ease; flex-shrink:0; }
-  .chakra-item.open .chakra-arrow{ transform:rotate(180deg); }
-  .chakra-body{ max-height:0; overflow:hidden; transition:max-height .5s ease, padding .5s ease; padding:0 22px; }
-  .chakra-item.open .chakra-body{ max-height:400px; padding:0 22px 22px; }
-  .chakra-body p{ font-size:14.5px; margin-bottom:12px; }
-  .chakra-crystals{ display:flex; flex-wrap:wrap; gap:8px; }
-  .crystal-tag{
-    font-family:var(--round); font-size:12px; color:var(--gold-deep);
-    background:rgba(189,162,126,0.12); border:1px solid var(--line);
-    padding:6px 14px; border-radius:20px;
-  }
-
-  /* ---------- 測驗區 ---------- */
-  #quiz{ background:var(--bg); }
+  #quiz{ padding-top:150px; background:var(--bg); text-align:center; }
   .quiz-intro{ max-width:600px; margin:0 auto; }
   .quiz-scale-legend{
     display:flex; justify-content:center; gap:14px; margin:26px auto 6px;
@@ -62,16 +30,51 @@
     max-width:600px; margin:40px auto 0; padding:0 36px;
     background:var(--bg-deep); border:1px solid var(--gold); border-radius:22px;
     text-align:left; opacity:0; max-height:0; overflow:hidden;
-    transition:opacity .6s ease, max-height .7s ease, padding .6s ease;
+    transition:opacity .6s ease, max-height .8s ease, padding .6s ease;
   }
-  .result-panel.active{ opacity:1; max-height:600px; padding:34px 36px 38px; }
+  .result-panel.active{ opacity:1; max-height:900px; padding:34px 36px 38px; }
   .result-panel .r-eyebrow{ font-family:var(--round); font-size:12px; letter-spacing:.2em; color:var(--gold-deep); margin-bottom:10px; }
   .result-panel h3{ font-size:24px; margin-bottom:6px; }
   .result-panel .r-sub{ font-family:var(--round); font-size:12.5px; color:var(--ink-soft); margin-bottom:16px; }
   .result-panel p{ font-size:14.5px; margin-bottom:16px; }
-  .result-crystals{ display:flex; flex-wrap:wrap; gap:10px; margin-bottom:20px; }
-  .result-crystals .crystal-tag{ font-size:13px; padding:8px 16px; }
+  .result-crystals{ display:flex; flex-direction:column; gap:10px; margin-bottom:20px; }
   .result-cta{ display:flex; gap:12px; flex-wrap:wrap; }
+
+  /* ---------- 水晶卡片(共用) ---------- */
+  .crystal-card{
+    display:flex; gap:12px; align-items:flex-start;
+    background:var(--bg); border:1px solid var(--line); border-radius:14px; padding:14px 16px;
+  }
+  .crystal-icon{ width:30px; height:30px; flex-shrink:0; margin-top:2px; }
+  .crystal-card .cc-name{ font-size:14px; font-weight:600; color:var(--ink); margin-bottom:3px; }
+  .crystal-card .cc-desc{ font-size:13px; color:var(--ink-soft); line-height:1.6; }
+
+  /* ---------- 七脈輪 手風琴 ---------- */
+  #map{ padding-top:0; background:var(--bg-deep); text-align:center; }
+  .map-hint{ margin-top:10px; }
+  .chakra-list{ max-width:640px; margin:44px auto 0; text-align:left; display:flex; flex-direction:column; gap:14px; }
+  .chakra-item{
+    background:var(--bg); border:1px solid var(--line); border-radius:16px; overflow:hidden;
+  }
+  .chakra-head{
+    width:100%; display:flex; align-items:center; gap:16px; padding:18px 20px;
+    background:none; border:none; cursor:pointer; text-align:left;
+  }
+  .chakra-icon-wrap{
+    width:44px; height:44px; border-radius:50%; flex-shrink:0;
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:0 6px 14px -4px rgba(60,50,30,0.35);
+  }
+  .chakra-icon-wrap svg{ width:24px; height:24px; }
+  .chakra-head .ct{ flex:1; }
+  .chakra-head h3{ font-size:16.5px; margin-bottom:2px; }
+  .chakra-head .sub{ font-family:var(--round); font-size:11.5px; color:var(--ink-soft); letter-spacing:.08em; }
+  .chakra-arrow{ font-family:var(--round); color:var(--gold-deep); transition:transform .35s ease; flex-shrink:0; }
+  .chakra-item.open .chakra-arrow{ transform:rotate(180deg); }
+  .chakra-body{ max-height:0; overflow:hidden; transition:max-height .5s ease, padding .5s ease; padding:0 22px; }
+  .chakra-item.open .chakra-body{ max-height:900px; padding:0 22px 22px; }
+  .chakra-body p{ font-size:14.5px; margin-bottom:14px; }
+  .chakra-crystals{ display:flex; flex-direction:column; gap:10px; }
 </style>
 </head>
 <body>
@@ -88,18 +91,6 @@
     </div>
   </div>
 </nav>
-
-<section id="map">
-  <div class="wrap">
-    <div class="eyebrow" style="justify-content:center;">life map / 七脈輪地圖</div>
-    <h2>你的生命晶脈地圖</h2>
-    <p class="map-hint">點一點下方的每個脈輪，看看它掌管的區域與相應的療癒水晶。</p>
-
-    <div class="chakra-list" id="chakraList"></div>
-  </div>
-</section>
-
-<div class="divider" style="margin:0 24px;"><div class="l"></div><span>✦</span><div class="r"></div></div>
 
 <section id="quiz">
   <div class="wrap">
@@ -133,9 +124,21 @@
   </div>
 </section>
 
+<div class="divider" style="margin:0 24px;"><div class="l"></div><span>✦</span><div class="r"></div></div>
+
+<section id="map">
+  <div class="wrap">
+    <div class="eyebrow" style="justify-content:center;">life map / 七脈輪地圖</div>
+    <h2>你的生命晶脈地圖</h2>
+    <p class="map-hint">點一點下方的每個脈輪，看看它掌管的區域與相應的療癒水晶。</p>
+
+    <div class="chakra-list" id="chakraList"></div>
+  </div>
+</section>
+
 <footer>
   <span class="fmark">✦</span>
-  晶脈 JING MAI ｜ 順應內心的人生陪跑日記
+  晶脈 JING MAI ｜ 順應內在紋理的人生陪跑日記
   <nav class="foot-links">
     <a href="index.html">首頁</a><a href="companion.html">陪跑分類</a><a href="story.html">內容介紹</a><a href="map.html">生命地圖</a><a href="about.html">關於我</a>
   </nav>
@@ -146,30 +149,68 @@
     document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 30);
   });
 
-  // ---------- 七脈輪資料 ----------
+  // 共用的簡易水晶圖示（六角晶體造型）
+  const gemIconSVG = (color) => `<svg viewBox="0 0 24 24" fill="none" stroke="${color}" stroke-width="1.4"><path d="M6 3h12l4 6-10 12L2 9z"/><path d="M2 9h20M9 3l-3 6 6 12 6-12-3-6M6 3l0 0" /></svg>`;
+
+  // ---------- 七脈輪資料（含每顆水晶的簡短介紹） ----------
   const chakras = [
     { key:'root', color:'#c65b4e', name:'海底輪', title:'湧泉之谷 · 海底輪', sub:'ROOT · 安全感與根基',
       desc:'掌管生存、安全感與物質層面的穩定。當這裡的能量不足，人容易感到不安、缺乏依靠、身體緊繃難以放鬆。',
-      crystals:['紅碧玉','黑曜石','石榴石'] },
+      crystals:[
+        {name:'紅碧玉', desc:'溫和而穩定的能量，幫助扎根安定，適合長期佩戴培養安全感。'},
+        {name:'黑曜石', desc:'具強力的保護與淨化特性，能阻擋負能量、增加安全感。'},
+        {name:'石榴石', desc:'提升生命力與行動力，幫助找回向前走的勇氣。'},
+      ]},
     { key:'sacral', color:'#d98a3d', name:'臍輪', title:'潮汐之灣 · 臍輪', sub:'SACRAL · 情感與創造力',
       desc:'掌管情緒流動、親密感受與創造力。能量不足時，容易感到麻木、難以享受生活，也較難自在地表達親密與慾望。',
-      crystals:['紅玉髓','太陽石','橘色月光石'] },
+      crystals:[
+        {name:'紅玉髓', desc:'提升行動力與熱情，幫助重新感受生活的活力。'},
+        {name:'太陽石', desc:'帶來溫暖與樂觀，鼓勵表達真實的情緒與慾望。'},
+        {name:'橘色月光石', desc:'平衡陰柔情感能量，增加對親密關係的自在感。'},
+      ]},
     { key:'solar', color:'#d9b23d', name:'太陽神經叢輪', title:'暖陽高原 · 太陽神經叢輪', sub:'SOLAR PLEXUS · 自信與意志力',
       desc:'掌管自信、意志力與自我價值感。不足時容易猶豫不決、在意他人眼光，感覺自己失去了為自己做主的力量。',
-      crystals:['虎眼石','黃水晶','黃玉'] },
+      crystals:[
+        {name:'虎眼石', desc:'增強自信與意志力，幫助在猶豫時做出堅定的決定。'},
+        {name:'黃水晶', desc:'象徵豐盛與陽光能量，提升自我價值感。'},
+        {name:'黃玉', desc:'帶來清晰的目標感，協助找回為自己做主的力量。'},
+      ]},
     { key:'heart', color:'#7fa876', name:'心輪', title:'繁星森林 · 心輪', sub:'HEART · 愛與連結',
       desc:'掌管愛、信任與人際間的連結。能量不足時，容易在關係裡築起防衛的牆，或感覺付出很多卻很少被接住。',
-      crystals:['粉晶','綠東陵玉','粉紫鋰輝石'] },
+      crystals:[
+        {name:'粉晶', desc:'愛與溫柔的代表，幫助軟化防衛、重新打開心房。'},
+        {name:'綠東陵玉', desc:'帶來平靜與療癒感，幫助修復關係中的疲憊。'},
+        {name:'粉紫鋰輝石', desc:'舒緩焦慮情緒，幫助放下過度付出的壓力。'},
+      ]},
     { key:'throat', color:'#4f8fa8', name:'喉輪', title:'迴音峽谷 · 喉輪', sub:'THROAT · 表達與溝通',
       desc:'掌管真實的表達與溝通。不足時容易把話吞回去，不敢說出真正的想法，長期下來會累積委屈。',
-      crystals:['藍紋瑪瑙','海藍寶','藍晶石'] },
+      crystals:[
+        {name:'藍紋瑪瑙', desc:'溫和地鼓勵表達，幫助說出心裡真正的話。'},
+        {name:'海藍寶', desc:'象徵平靜的溝通與勇氣，幫助化解言語上的恐懼。'},
+        {name:'藍晶石', desc:'清理喉輪阻塞，讓表達更順暢、更真誠。'},
+      ]},
     { key:'third', color:'#5a5aa6', name:'眉心輪', title:'澄澈之巔 · 眉心輪', sub:'THIRD EYE · 洞察與直覺',
       desc:'掌管直覺、洞察與內在的清晰。能量不足時，容易思緒混亂、抓不到方向，也難以信任自己的直覺判斷。',
-      crystals:['紫水晶','拉長石','螢石'] },
+      crystals:[
+        {name:'紫水晶', desc:'提升直覺與靈性覺察，幫助看清內在真正的方向。'},
+        {name:'拉長石', desc:'增強洞察力與直覺連結，幫助辨識適合自己的人生方向。'},
+        {name:'螢石', desc:'淨化雜亂思緒，幫助專注與清晰思考。'},
+      ]},
     { key:'crown', color:'#9c7bc9', name:'頂輪', title:'星穹聖殿 · 頂輪', sub:'CROWN · 靈性連結與意義',
       desc:'掌管與更大存在的連結、生命的意義感。不足時容易感到一種說不出的空虛，即使外在一切安好，內心仍覺得缺了什麼。',
-      crystals:['白水晶','紫黃晶','透石膏'] },
+      crystals:[
+        {name:'白水晶', desc:'萬用的淨化與能量放大石，幫助連結更高的自我。'},
+        {name:'紫黃晶', desc:'結合智慧與豐盛能量，帶來心靈與物質的平衡感。'},
+        {name:'透石膏', desc:'高頻淨化石，幫助釋放沉重情緒、連結靈性意義。'},
+      ]},
   ];
+
+  function crystalCardHTML(x, color){
+    return `<div class="crystal-card">
+      <div class="crystal-icon">${gemIconSVG(color)}</div>
+      <div><div class="cc-name">${x.name}</div><div class="cc-desc">${x.desc}</div></div>
+    </div>`;
+  }
 
   const chakraList = document.getElementById('chakraList');
   chakras.forEach((c, i) => {
@@ -177,7 +218,7 @@
     item.className = 'chakra-item';
     item.innerHTML = `
       <button class="chakra-head" data-i="${i}">
-        <div class="chakra-dot" style="background:${c.color}"></div>
+        <div class="chakra-icon-wrap" style="background:${c.color}22;">${gemIconSVG(c.color)}</div>
         <div class="ct">
           <h3>${c.title}</h3>
           <div class="sub">${c.sub}</div>
@@ -187,7 +228,7 @@
       <div class="chakra-body">
         <p>${c.desc}</p>
         <div class="chakra-crystals">
-          ${c.crystals.map(x => `<span class="crystal-tag">${x}</span>`).join('')}
+          ${c.crystals.map(x => crystalCardHTML(x, c.color)).join('')}
         </div>
       </div>`;
     chakraList.appendChild(item);
@@ -276,7 +317,7 @@
     document.getElementById('rTitle').textContent = c.title;
     document.getElementById('rSub').textContent = c.sub;
     document.getElementById('rText').textContent = c.desc;
-    document.getElementById('rCrystals').innerHTML = c.crystals.map(x => `<span class="crystal-tag">${x}</span>`).join('');
+    document.getElementById('rCrystals').innerHTML = c.crystals.map(x => crystalCardHTML(x, c.color)).join('');
     resultPanel.classList.add('active');
     resultPanel.scrollIntoView({behavior:'smooth', block:'center'});
   });
