@@ -108,3 +108,88 @@ footer .foot-links a:hover{ color:var(--gold-deep); }
   .nav-inner{ flex-direction:column; gap:10px; }
   .nav-links{ justify-content:center; }
 }
+
+/* ========== 共用元件（服務卡片 / 價格 / 提醒 / CTA） ========== */
+.cat-grid{ display:grid; grid-template-columns:1fr 1fr; gap:28px; margin-top:44px; }
+@media(max-width:720px){ .cat-grid{ grid-template-columns:1fr; } }
+
+.cat-card{
+  background:#fff; border:1px solid var(--line); border-radius:22px;
+  padding:40px 32px; position:relative; overflow:hidden;
+  transition:transform .4s ease, box-shadow .4s ease;
+  display:block; text-decoration:none; color:inherit; cursor:pointer;
+}
+.cat-card:hover{ transform:translateY(-6px); box-shadow:0 30px 50px -30px rgba(157,133,98,0.35); }
+.cat-card .tag{ font-family:var(--round); font-size:12px; color:var(--gold-deep); letter-spacing:0.18em; }
+.cat-card h3{ font-size:22px; margin:12px 0 12px; }
+.cat-card p{ font-size:14.5px; }
+.cat-card .mark{ position:absolute; right:-6px; top:-16px; font-size:80px; font-family:var(--serif); color:var(--gold); opacity:.08; }
+.cat-card ul{ margin-top:18px; padding-left:0; list-style:none; }
+.cat-card li{ font-size:14px; color:var(--ink-soft); padding:8px 0; border-top:1px solid var(--line); display:flex; gap:8px; }
+.cat-card li::before{ content:'·'; color:var(--gold-deep); font-weight:700; }
+.cat-card .price{ margin-top:20px; font-family:var(--round); font-size:13px; color:var(--gold-deep); }
+.cat-card .tap-hint{
+  margin-top:18px; font-family:var(--round); font-size:12.5px; color:#06C755; font-weight:700;
+  display:flex; align-items:center; gap:6px;
+}
+.cat-icon{ width:46px; height:46px; margin-bottom:14px; color:var(--gold-deep); }
+
+.flow-steps{ margin-top:22px; padding-top:20px; border-top:1px dashed var(--line); }
+.flow-steps .flow-label{ font-family:var(--round); font-size:11.5px; color:var(--gold-deep); letter-spacing:.15em; margin-bottom:12px; }
+.flow-step{ display:flex; gap:12px; padding:8px 0; }
+.flow-step .fn{
+  width:22px; height:22px; border-radius:50%; background:var(--gold); color:#fff;
+  font-family:var(--round); font-size:11px; display:flex; align-items:center; justify-content:center;
+  flex-shrink:0; margin-top:1px;
+}
+.flow-step .ft{ font-size:13.5px; color:var(--ink-soft); }
+.flow-step .ft b{ color:var(--ink); font-weight:600; }
+
+.price-list{ margin-top:20px; padding-top:18px; border-top:1px dashed var(--line); }
+.price-row{ display:flex; justify-content:space-between; align-items:baseline; gap:12px; padding:9px 0; font-size:14px; }
+.price-row .p-name{ color:var(--ink); }
+.price-row .p-name small{ display:block; font-size:11.5px; color:var(--ink-soft); margin-top:2px; }
+.price-row .p-num{ font-family:var(--round); color:var(--gold-deep); font-weight:700; white-space:nowrap; }
+
+.disclaimer{
+  margin-top:18px; padding-top:16px; border-top:1px solid var(--line);
+  font-size:12px; color:var(--ink-soft); line-height:1.7;
+}
+
+.brand-belief{
+  margin-top:36px; background:#fff; border:1px solid var(--line); border-radius:22px;
+  padding:34px 32px; text-align:center;
+}
+.brand-belief p{ font-size:14.5px; line-height:1.9; max-width:640px; margin:0 auto; }
+.brand-belief p + p{ margin-top:12px; }
+
+.section-divider{ margin:64px 0 0; }
+
+.line-cta{
+  margin-top:50px; background:var(--bg-deep); border:1px solid var(--line); border-radius:22px;
+  padding:36px 32px; text-align:center;
+}
+.line-cta h3{ font-size:19px; margin-bottom:10px; }
+.line-cta p{ font-size:14px; max-width:440px; margin:0 auto 22px; }
+.line-btn{
+  display:inline-flex; align-items:center; gap:10px;
+  background:#06C755; color:#fff; font-family:var(--round); font-size:15px; font-weight:700;
+  padding:14px 34px; border-radius:30px; text-decoration:none;
+  transition:all .3s ease;
+}
+.line-btn:hover{ background:#05a648; transform:translateY(-2px); box-shadow:0 12px 24px -10px rgba(6,199,85,0.5); }
+.line-btn svg{ width:20px; height:20px; }
+
+/* 首頁三大服務並列卡片 */
+.pillar-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:22px; margin-top:50px; }
+@media(max-width:860px){ .pillar-grid{ grid-template-columns:1fr; } }
+.pillar-card{
+  background:#fff; border:1px solid var(--line); border-radius:20px; padding:34px 26px;
+  text-align:left; text-decoration:none; color:inherit; display:block;
+  transition:transform .4s ease, box-shadow .4s ease;
+}
+.pillar-card:hover{ transform:translateY(-6px); box-shadow:0 26px 44px -28px rgba(157,133,98,0.4); }
+.pillar-card .cat-icon{ margin-bottom:16px; }
+.pillar-card h3{ font-size:18px; margin-bottom:8px; }
+.pillar-card p{ font-size:13.5px; }
+.pillar-card .go{ margin-top:16px; font-family:var(--round); font-size:12.5px; color:var(--gold-deep); font-weight:700; }

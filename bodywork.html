@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>結構整復｜晶脈</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  #bodywork{ padding-top:150px; background:var(--bg-deep); }
+  .bw-hero{ display:flex; gap:16px; align-items:center; margin-bottom:10px; }
+  .bw-icon-big{
+    width:72px; height:72px; border-radius:50%; background:#fff; border:1px solid var(--line);
+    display:flex; align-items:center; justify-content:center; flex-shrink:0;
+    box-shadow:0 12px 24px -14px rgba(157,133,98,0.4);
+  }
+  .bw-icon-big svg{ width:38px; height:38px; color:var(--gold-deep); }
+
+  .single-card{
+    background:#fff; border:1px solid var(--line); border-radius:24px;
+    padding:40px clamp(24px,5vw,48px); margin-top:36px;
+  }
+  .bw-steps{ margin-top:10px; display:flex; flex-direction:column; gap:0; }
+  .bw-step{ display:flex; gap:22px; padding:22px 0; border-top:1px solid var(--line); }
+  .bw-step:first-child{ border-top:none; }
+  .bw-step .fn{
+    width:30px; height:30px; border-radius:50%; background:var(--gold); color:#fff; flex-shrink:0;
+    font-family:var(--round); font-size:13px; display:flex; align-items:center; justify-content:center;
+  }
+  .bw-step h4{ font-size:16px; margin-bottom:4px; }
+  .bw-step p{ font-size:14px; }
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo"><img src="logo.png" alt="晶脈"><span>晶脈</span></a>
+    <div class="nav-links">
+      <a href="index.html">首頁</a>
+      <a href="companion.html">陪跑陪伴</a>
+      <a href="bodywork.html" class="active">結構整復</a>
+      <a href="spray.html">能量噴霧</a>
+      <a href="map.html">生命地圖</a>
+      <a href="about.html">關於我</a>
+    </div>
+  </div>
+</nav>
+
+<section id="bodywork">
+  <div class="wrap">
+    <div class="eyebrow">body therapy / 結構整復</div>
+    <div class="bw-hero">
+      <div class="bw-icon-big">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 3c-2 2-3 4-3 6a3 3 0 0 0 6 0c0-2-1-4-3-6z"/><path d="M6 14c0 4 2.5 7 6 7s6-3 6-7"/><path d="M9 14v3M15 14v3"/></svg>
+      </div>
+      <h2 style="margin-bottom:0;">透過身體，回到平衡</h2>
+    </div>
+    <p>身體常常比我們更誠實——長期的壓力、姿勢與情緒，最後都會用緊繃與疼痛的方式呈現出來。結構調理整復，透過身體結構的調整與放鬆，幫助舒緩緊繃與疼痛，找回身體原本該有的輕鬆感。</p>
+
+    <div class="single-card">
+      <h3 style="font-size:19px; margin-bottom:16px;">服務內容與費用</h3>
+      <div class="price-list">
+        <div class="price-row">
+          <div class="p-name">首次體驗<small>完整了解身體狀況並調整</small></div>
+          <div class="p-num">$1,500 / 60 分鐘</div>
+        </div>
+        <div class="price-row">
+          <div class="p-name">後續保養<small>維持與鞏固調整成果</small></div>
+          <div class="p-num">$500 / 20 分鐘</div>
+        </div>
+      </div>
+
+      <div class="bw-steps">
+        <div class="bw-step">
+          <div class="fn">1</div>
+          <div><h4>了解身體狀況</h4><p>透過對話與觸診，了解你目前緊繃、疼痛或不適的部位與生活習慣。</p></div>
+        </div>
+        <div class="bw-step">
+          <div class="fn">2</div>
+          <div><h4>結構調整與放鬆</h4><p>針對肌肉、筋膜與關節的張力進行調理，幫助身體恢復原本該有的排列與彈性。</p></div>
+        </div>
+        <div class="bw-step">
+          <div class="fn">3</div>
+          <div><h4>衛教與居家建議</h4><p>結束後會給你一些簡單的居家伸展或姿勢建議，讓調整的效果能延續下去。</p></div>
+        </div>
+      </div>
+
+      <div class="disclaimer">結構調理屬於身體放鬆與調整的輔助方式，主要幫助舒緩疼痛與緊繃，不取代醫療行為；如有嚴重疾病，請優先諮詢醫師。</div>
+    </div>
+
+    <div class="line-cta">
+      <h3>想預約結構調理整復嗎？</h3>
+      <p>加入晶脈官方 LINE，告訴我們你目前的身體狀況，我們協助你安排合適的時段。</p>
+      <a href="https://lin.ee/sXX670c" class="line-btn" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 5.94 2 10.7c0 4.27 3.58 7.85 8.42 8.55.33.07.77.22.88.5.1.26.07.66.03.92l-.14.86c-.04.26-.2 1 .87.55 1.08-.46 5.8-3.42 7.92-5.85C21.44 14.1 22 12.47 22 10.7 22 5.94 17.52 2 12 2z"/></svg>
+        加入官方 LINE 預約
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="fmark">✦</span>
+  晶脈 JING MAI ｜ 順應內心的人生陪跑日記
+  <nav class="foot-links">
+    <a href="index.html">首頁</a><a href="companion.html">陪跑陪伴</a><a href="bodywork.html">結構整復</a><a href="spray.html">能量噴霧</a><a href="map.html">生命地圖</a><a href="about.html">關於我</a>
+  </nav>
+</footer>
+
+<script>
+  window.addEventListener('scroll', () => {
+    document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 30);
+  });
+</script>
+</body>
+</html>

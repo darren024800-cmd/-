@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>能量噴霧｜晶脈</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  #spray{ padding-top:150px; background:var(--bg-deep); }
+  .sp-hero{ display:flex; gap:16px; align-items:center; margin-bottom:10px; }
+  .sp-icon-big{
+    width:72px; height:72px; border-radius:50%; background:#fff; border:1px solid var(--line);
+    display:flex; align-items:center; justify-content:center; flex-shrink:0;
+    box-shadow:0 12px 24px -14px rgba(157,133,98,0.4);
+  }
+  .sp-icon-big svg{ width:38px; height:38px; color:var(--gold-deep); }
+
+  .scent-grid{ display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-top:40px; }
+  @media(max-width:640px){ .scent-grid{ grid-template-columns:1fr; } }
+  .scent-card{
+    background:#fff; border:1px solid var(--line); border-radius:20px; padding:26px 26px;
+    position:relative; overflow:hidden;
+  }
+  .scent-card .scent-mark{ position:absolute; right:-8px; top:-14px; font-size:64px; font-family:var(--serif); color:var(--gold); opacity:.08; }
+  .scent-card h3{ font-size:18px; margin-bottom:4px; }
+  .scent-card .note{ font-family:var(--round); font-size:12px; color:var(--gold-deep); letter-spacing:.06em; margin-bottom:10px; }
+  .scent-card .price{ margin-top:14px; font-family:var(--round); font-size:14px; color:var(--ink); font-weight:700; }
+
+  .custom-card{
+    margin-top:24px; background:var(--bg); border:1px dashed var(--gold); border-radius:20px;
+    padding:26px 28px; text-align:center;
+  }
+  .custom-card h3{ font-size:17px; margin-bottom:8px; }
+  .custom-card .price{ margin-top:12px; font-family:var(--round); font-size:15px; color:var(--gold-deep); font-weight:700; }
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo"><img src="logo.png" alt="晶脈"><span>晶脈</span></a>
+    <div class="nav-links">
+      <a href="index.html">首頁</a>
+      <a href="companion.html">陪跑陪伴</a>
+      <a href="bodywork.html">結構整復</a>
+      <a href="spray.html" class="active">能量噴霧</a>
+      <a href="map.html">生命地圖</a>
+      <a href="about.html">關於我</a>
+    </div>
+  </div>
+</nav>
+
+<section id="spray">
+  <div class="wrap">
+    <div class="eyebrow">aroma energy / 能量噴霧系列</div>
+    <div class="sp-hero">
+      <div class="sp-icon-big">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 2v3M9 3.5l1.5 1.5M15 3.5l-1.5 1.5"/><path d="M8 9h8l1 12a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2z"/><path d="M8 13h8"/></svg>
+      </div>
+      <h2 style="margin-bottom:0;">手工調製，讓香氣傳遞意圖</h2>
+    </div>
+    <p>每一瓶晶脈能量噴霧，都是手工精油調製而成，對應著不同的生活祝福與意圖。用香氣溫柔地陪伴你的空間與日常，也支持著你想累積的生活能量。</p>
+
+    <div class="scent-grid">
+      <div class="scent-card">
+        <div class="scent-mark">好</div>
+        <h3>好運噴霧</h3>
+        <div class="note">柑橘味主調</div>
+        <p>清新明亮的柑橘香氣，適合在一天的開始使用，帶來輕盈、順利的能量感。</p>
+        <div class="price">$300 / 30ml</div>
+      </div>
+      <div class="scent-card">
+        <div class="scent-mark">財</div>
+        <h3>財運噴霧</h3>
+        <div class="note">廣藿香主調</div>
+        <p>沉穩溫厚的廣藿香香氣，適合用於工作空間，支持踏實與豐盛的能量感。</p>
+        <div class="price">$300 / 30ml</div>
+      </div>
+      <div class="scent-card">
+        <div class="scent-mark">貴</div>
+        <h3>貴人噴霧</h3>
+        <div class="note">玫瑰 or 木質調（可選）</div>
+        <p>可依個人喜好選擇玫瑰的溫柔香氣，或木質調的沉穩香氣，支持人際關係中的貴人能量。</p>
+        <div class="price">$300 / 30ml</div>
+      </div>
+      <div class="scent-card">
+        <div class="scent-mark">桃</div>
+        <h3>桃花噴霧</h3>
+        <div class="note">伊蘭主調</div>
+        <p>甜美柔和的伊蘭香氣，適合想增進感情與人緣時使用，帶來溫暖的親和力。</p>
+        <div class="price">$300 / 30ml</div>
+      </div>
+    </div>
+
+    <div class="custom-card">
+      <h3>客製噴霧</h3>
+      <p>想要一瓶專屬於你的能量噴霧嗎？告訴我們你的需求與喜歡的香氣調性，為你調製獨一無二的配方。</p>
+      <div class="price">$600 – $1,000 / 30ml</div>
+    </div>
+
+    <div class="disclaimer" style="margin-top:30px; max-width:640px;">噴霧請勿直接用在人體，可噴在衣服或是空間中，以提供相對應的能量。</div>
+
+    <div class="line-cta">
+      <h3>想訂購或客製你的能量噴霧嗎？</h3>
+      <p>加入晶脈官方 LINE，告訴我們你想要的香氣與用途，協助你挑選最適合的一瓶。</p>
+      <a href="https://lin.ee/sXX670c" class="line-btn" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 5.94 2 10.7c0 4.27 3.58 7.85 8.42 8.55.33.07.77.22.88.5.1.26.07.66.03.92l-.14.86c-.04.26-.2 1 .87.55 1.08-.46 5.8-3.42 7.92-5.85C21.44 14.1 22 12.47 22 10.7 22 5.94 17.52 2 12 2z"/></svg>
+        加入官方 LINE 訂購
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="fmark">✦</span>
+  晶脈 JING MAI ｜ 順應內心的人生陪跑日記
+  <nav class="foot-links">
+    <a href="index.html">首頁</a><a href="companion.html">陪跑陪伴</a><a href="bodywork.html">結構整復</a><a href="spray.html">能量噴霧</a><a href="map.html">生命地圖</a><a href="about.html">關於我</a>
+  </nav>
+</footer>
+
+<script>
+  window.addEventListener('scroll', () => {
+    document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 30);
+  });
+</script>
+</body>
+</html>
