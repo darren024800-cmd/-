@@ -3,59 +3,28 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>陪跑分類｜晶脈</title>
+<title>陪跑陪伴｜晶脈</title>
 <link rel="stylesheet" href="style.css">
 <style>
-  #companion{ padding-top:150px; background:var(--bg-deep); min-height:100vh; }
-  .cat-grid{ display:grid; grid-template-columns:1fr 1fr; gap:28px; margin-top:44px; }
-  @media(max-width:720px){ .cat-grid{ grid-template-columns:1fr; } }
-  .cat-card{
-    background:var(--bg); border:1px solid var(--line); border-radius:22px;
-    padding:40px 32px; position:relative; overflow:hidden;
-    transition:transform .4s ease, box-shadow .4s ease;
-    display:block; text-decoration:none; color:inherit; cursor:pointer;
-  }
-  .cat-card:hover{ transform:translateY(-6px); box-shadow:0 30px 50px -30px rgba(157,133,98,0.35); }
-  .cat-card .tag{ font-family:var(--round); font-size:12px; color:var(--gold-deep); letter-spacing:0.18em; }
-  .cat-card h3{ font-size:22px; margin:12px 0 12px; }
-  .cat-card p{ font-size:14.5px; }
-  .cat-card .mark{ position:absolute; right:-6px; top:-16px; font-size:80px; font-family:var(--serif); color:var(--gold); opacity:.08; }
-  .cat-card ul{ margin-top:18px; padding-left:0; list-style:none; }
-  .cat-card li{ font-size:14px; color:var(--ink-soft); padding:8px 0; border-top:1px solid var(--line); display:flex; gap:8px; }
-  .cat-card li::before{ content:'·'; color:var(--gold-deep); font-weight:700; }
-  .cat-card .price{ margin-top:20px; font-family:var(--round); font-size:13px; color:var(--gold-deep); }
-  .cat-card .tap-hint{
-    margin-top:18px; font-family:var(--round); font-size:12.5px; color:#06C755; font-weight:700;
-    display:flex; align-items:center; gap:6px;
-  }
+  #companion{ padding-top:150px; background:var(--bg-deep); }
 
-  .line-cta{
-    margin-top:50px; background:var(--bg); border:1px solid var(--line); border-radius:22px;
-    padding:36px 32px; text-align:center;
-  }
-  .line-cta h3{ font-size:19px; margin-bottom:10px; }
-  .line-cta p{ font-size:14px; max-width:440px; margin:0 auto 22px; }
-  .line-btn{
-    display:inline-flex; align-items:center; gap:10px;
-    background:#06C755; color:#fff; font-family:var(--round); font-size:15px; font-weight:700;
-    padding:14px 34px; border-radius:30px; text-decoration:none;
-    transition:all .3s ease;
-  }
-  .line-btn:hover{ background:#05a648; transform:translateY(-2px); box-shadow:0 12px 24px -10px rgba(6,199,85,0.5); }
-  .line-btn svg{ width:20px; height:20px; }
+  .process{ margin-top:44px; display:flex; flex-direction:column; gap:0; }
+  .p-step{ display:flex; gap:26px; padding:28px 0; border-top:1px solid var(--line); }
+  .p-step:first-child{ border-top:none; }
+  .p-num{ font-family:var(--round); font-size:14px; color:var(--gold-deep); letter-spacing:.1em; flex-shrink:0; width:56px; padding-top:2px; }
+  .p-body h3{ font-size:19px; margin-bottom:8px; }
+  .p-body p{ font-size:14.5px; }
 
-  .cat-icon{ width:46px; height:46px; margin-bottom:14px; color:var(--gold-deep); }
-
-  .flow-steps{ margin-top:22px; padding-top:20px; border-top:1px dashed var(--line); }
-  .flow-steps .flow-label{ font-family:var(--round); font-size:11.5px; color:var(--gold-deep); letter-spacing:.15em; margin-bottom:12px; }
-  .flow-step{ display:flex; gap:12px; padding:8px 0; }
-  .flow-step .fn{
-    width:22px; height:22px; border-radius:50%; background:var(--gold); color:#fff;
-    font-family:var(--round); font-size:11px; display:flex; align-items:center; justify-content:center;
-    flex-shrink:0; margin-top:1px;
+  #diary{ background:var(--bg); }
+  .diary-grid{ display:flex; flex-direction:column; gap:26px; margin-top:40px; }
+  .diary{
+    background:var(--bg-deep); border:1px solid var(--line); border-radius:18px;
+    padding:30px 32px; border-left:3px solid var(--gold);
   }
-  .flow-step .ft{ font-size:13.5px; color:var(--ink-soft); }
-  .flow-step .ft b{ color:var(--ink); font-weight:600; }
+  .diary .date{ font-family:var(--round); font-size:12px; color:var(--gold-deep); letter-spacing:.14em; margin-bottom:10px; }
+  .diary .stage{ display:inline-block; font-family:var(--round); font-size:11px; color:#fff; background:var(--gold); padding:3px 12px; border-radius:20px; margin-bottom:14px; letter-spacing:.08em; }
+  .diary p{ font-size:15px; }
+  .diary p + p{ margin-top:10px; }
 </style>
 </head>
 <body>
@@ -65,8 +34,9 @@
     <a href="index.html" class="nav-logo"><img src="logo.png" alt="晶脈"><span>晶脈</span></a>
     <div class="nav-links">
       <a href="index.html">首頁</a>
-      <a href="companion.html" class="active">陪跑分類</a>
-      <a href="story.html">內容介紹</a>
+      <a href="companion.html" class="active">陪跑陪伴</a>
+      <a href="bodywork.html">結構整復</a>
+      <a href="spray.html">能量噴霧</a>
       <a href="map.html">生命地圖</a>
       <a href="about.html">關於我</a>
     </div>
@@ -125,10 +95,81 @@
       </a>
     </div>
 
+    <div class="section-divider">
+      <div class="eyebrow">process / 陪跑的四個階段</div>
+      <h2>不是課程，是一場真誠且有步驟的陪伴</h2>
+      <p>晶脈陪跑不販賣速成的公式。每一段陪伴，都會走過以下四個階段——順序很重要，因為看清問題，才有辦法真正討論改變。</p>
+    </div>
+
+    <div class="process">
+      <div class="p-step">
+        <div class="p-num">01</div>
+        <div class="p-body">
+          <h3>看見問題：找出真正的癥結</h3>
+          <p>大部分人來的時候，帶著的是「症狀」——焦慮、卡住、不知道方向。第一階段，我們會一起把這些症狀攤開來看，找出真正卡住你的那個核心問題。這一步不會給建議，而是先誠實地看清楚，你到底在跟什麼過不去。</p>
+        </div>
+      </div>
+      <div class="p-step">
+        <div class="p-num">02</div>
+        <div class="p-body">
+          <h3>真人一對一諮詢：真實的時間，真實的人</h3>
+          <p>晶脈的陪跑沒有預錄課程、沒有罐頭回覆。每一次對談都是真人、即時、一對一地進行，你說的話會被真正地聽見，也會得到針對你此刻狀態的真實回應。</p>
+        </div>
+      </div>
+      <div class="p-step">
+        <div class="p-num">03</div>
+        <div class="p-body">
+          <h3>盤點盲點與優劣勢：誠實地看見全貌</h3>
+          <p>接下來，我們會一起盤點：哪些是你重複掉入的慣性盲點，哪些是你自己都還沒意識到的優勢與資源。這一步的重點不是評價好壞，而是讓你對自己有一份更完整、更誠實的認識。</p>
+        </div>
+      </div>
+      <div class="p-step">
+        <div class="p-num">04</div>
+        <div class="p-body">
+          <h3>陪伴前行：把看見落實成下一步</h3>
+          <p>看清楚之後，才談怎麼走。我們會依照你的節奏，一起訂出眼前可以踏出的下一步，並在後續的陪伴裡持續回顧、調整，讓你真實的被改變。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="diary">
+  <div class="wrap">
+    <div class="eyebrow">diary / 教練日記隨筆</div>
+    <h2>幾段被允許記錄下來的陪跑片刻</h2>
+    <p>以下日記皆已模糊化個人資訊，僅保留陪跑過程中真實發生的轉折，希望能讓你更具體地感受晶脈陪跑的樣子。</p>
+
+    <div class="diary-grid">
+      <div class="diary">
+        <div class="stage">階段一 · 看見問題</div>
+        <div class="date">📅 2026 年 6 月 隨筆</div>
+        <p>她一開始說的是「最近工作很累，可能需要調整時間管理」。但聊到第三十分鐘，她才說出真正的話：她不是不會管理時間，而是不敢承認自己其實一直在用忙碌，逃避一個她還沒準備好面對的決定。</p>
+        <p>找到這句話的那一刻，她愣住了，然後笑了。她說：「原來我今天是為了這句話而來的。」</p>
+      </div>
+
+      <div class="diary">
+        <div class="stage">階段二 · 真人對談</div>
+        <div class="date">📅 2026 年 5 月 隨筆</div>
+        <p>他問我：「這些話你是不是每個人都這樣說？」我說不是，因為我根本沒有一份固定的稿子。我只是在聽他說話的當下，誠實地回應我聽見了什麼。也因為這樣，他才願意繼續說下去，說到連他自己都沒想過的部分。</p>
+      </div>
+
+      <div class="diary">
+        <div class="stage">階段三 · 盲點與優劣勢盤點</div>
+        <div class="date">📅 2026 年 4 月 隨筆</div>
+        <p>我們一起整理出她的慣性盲點：習慣先照顧別人的感受，直到自己耗盡了才發現。但同時我們也看見她的優勢——她對人的細膩觀察，其實一直是她最被低估的力量。看見這兩件事同時存在，她才第一次真正地認識自己。</p>
+      </div>
+
+      <div class="diary">
+        <div class="stage">階段四 · 陪伴前行</div>
+        <div class="date">📅 2026 年 3 月 隨筆</div>
+        <p>有人問我，改變需要多久？我說，不是時間的問題，是願不願意誠實面對自己心中的問題。這位夥伴用了三個月的定期陪跑，一步一步把「知道」變成「做到」，那不是我幫她做到的，是她自己走出來的，我只是在旁邊，陪她確認方向沒有走偏。</p>
+      </div>
+    </div>
+
     <div class="line-cta">
       <h3>想直接聊聊，看看哪一種方式適合你？</h3>
       <p>加入晶脈官方 LINE，用最輕鬆的方式聊聊你現在的狀態，我會協助你判斷適合單次深探，還是長期陪伴。</p>
-      <!-- 請把下面 href 換成你自己的 LINE 官方帳號連結，例如 https://lin.ee/xxxxxxx -->
       <a href="https://lin.ee/sXX670c" class="line-btn" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 5.94 2 10.7c0 4.27 3.58 7.85 8.42 8.55.33.07.77.22.88.5.1.26.07.66.03.92l-.14.86c-.04.26-.2 1 .87.55 1.08-.46 5.8-3.42 7.92-5.85C21.44 14.1 22 12.47 22 10.7 22 5.94 17.52 2 12 2z"/></svg>
         加入官方 LINE
@@ -141,7 +182,7 @@
   <span class="fmark">✦</span>
   晶脈 JING MAI ｜ 順應內心的人生陪跑日記
   <nav class="foot-links">
-    <a href="index.html">首頁</a><a href="companion.html">陪跑分類</a><a href="story.html">內容介紹</a><a href="map.html">生命地圖</a><a href="about.html">關於我</a>
+    <a href="index.html">首頁</a><a href="companion.html">陪跑陪伴</a><a href="bodywork.html">結構整復</a><a href="spray.html">能量噴霧</a><a href="map.html">生命地圖</a><a href="about.html">關於我</a>
   </nav>
 </footer>
 
